@@ -7,7 +7,7 @@ from app.graph.nodes.segment_breakdowns import run_segment_breakdowns
 from app.graph.nodes.generate_hypotheses import generate_hypotheses
 from app.graph.nodes.validate_hypotheses import validate_hypotheses
 from app.graph.nodes.rank_hypotheses import rank_hypotheses_node
-from app.graph.nodes.generate_report import generate_report
+from app.graph.nodes.generate_report_llm import generate_report_llm
 
 
 def build_workflow():
@@ -19,7 +19,7 @@ def build_workflow():
     graph.add_node("generate_hypotheses", generate_hypotheses)
     graph.add_node("validate_hypotheses", validate_hypotheses)
     graph.add_node("rank_hypotheses", rank_hypotheses_node)
-    graph.add_node("generate_report", generate_report)
+    graph.add_node("generate_report", generate_report_llm)
 
     graph.set_entry_point("parse_question")
     graph.add_edge("parse_question", "resolve_metric")
