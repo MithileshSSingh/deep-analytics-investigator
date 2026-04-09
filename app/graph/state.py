@@ -5,6 +5,7 @@ class InvestigatorState(TypedDict, total=False):
     question: str
     parsed_question: Dict[str, Any]
     selected_route: Dict[str, Any]
+    route_selection: Dict[str, Any]
     plan: Dict[str, Any]
     metric_definition: Dict[str, Any]
     baseline_results: Dict[str, Any]

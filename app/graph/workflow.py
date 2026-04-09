@@ -1,7 +1,7 @@
 from langgraph.graph import StateGraph, END
 from app.graph.state import InvestigatorState
 from app.graph.nodes.parse_question_llm import parse_question_llm
-from app.graph.nodes.resolve_metric import resolve_metric
+from app.graph.nodes.select_route_llm import select_route_llm
 from app.graph.nodes.baseline_queries import run_baseline_queries
 from app.graph.nodes.segment_breakdowns import run_segment_breakdowns
 from app.graph.nodes.generate_hypotheses_llm import generate_hypotheses_llm
@@ -13,7 +13,7 @@ from app.graph.nodes.generate_report_llm import generate_report_llm
 def build_workflow():
     graph = StateGraph(InvestigatorState)
     graph.add_node("parse_question", parse_question_llm)
-    graph.add_node("resolve_metric", resolve_metric)
+    graph.add_node("resolve_metric", select_route_llm)
     graph.add_node("run_baseline_queries", run_baseline_queries)
     graph.add_node("run_segment_breakdowns", run_segment_breakdowns)
     graph.add_node("generate_hypotheses", generate_hypotheses_llm)
