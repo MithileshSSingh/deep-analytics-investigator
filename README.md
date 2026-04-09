@@ -39,7 +39,7 @@ Implemented today:
   - `generate_report_llm` node with deterministic fallback
 
 Current test status:
-- **22 passing tests**
+- **25 passing tests**
 
 ## Current workflow
 
@@ -193,6 +193,7 @@ Current behavior:
   - `generate_hypotheses_llm`
   - `generate_report_llm`
 - these LLM nodes validate and normalize returned JSON contracts before accepting model output
+- end-to-end evaluation coverage now checks full fallback traces, node ordering, and final report contract stability
 - if LLM is disabled, unavailable, or returns invalid output, it falls back to deterministic parsing/route selection/hypothesis generation/reporting
 
 ### Environment variables
@@ -222,5 +223,5 @@ If these are not set, the app still runs normally using fallback parsing.
 
 - dedupe evidence rows in final reports
 - expand route contracts beyond revenue
-- add evaluation coverage for LLM-enabled end-to-end traces
+- add true LLM-enabled integration tests with controlled mocks/fixtures
 - improve evaluation coverage
