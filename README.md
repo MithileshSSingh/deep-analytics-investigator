@@ -32,12 +32,13 @@ Implemented today:
   - query family registry
   - schema registry
   - evidence artifacts
-- first two LLM integration seams:
+- first three LLM integration seams:
   - `parse_question_llm` node with deterministic fallback
+  - `generate_hypotheses_llm` node with deterministic fallback
   - `generate_report_llm` node with deterministic fallback
 
 Current test status:
-- **16 passing tests**
+- **19 passing tests**
 
 ## Current workflow
 
@@ -187,9 +188,10 @@ The project now includes the first LLM integration seam for question parsing.
 Current behavior:
 - if LLM is enabled and configured, the workflow can use:
   - `parse_question_llm`
+  - `generate_hypotheses_llm`
   - `generate_report_llm`
-- both LLM nodes now validate and normalize returned JSON contracts before accepting model output
-- if LLM is disabled, unavailable, or returns invalid output, it falls back to deterministic parsing/reporting
+- these LLM nodes validate and normalize returned JSON contracts before accepting model output
+- if LLM is disabled, unavailable, or returns invalid output, it falls back to deterministic parsing/hypothesis generation/reporting
 
 ### Environment variables
 
@@ -217,6 +219,6 @@ If these are not set, the app still runs normally using fallback parsing.
 ## Next planned work
 
 - dedupe evidence rows in final reports
-- add `generate_hypotheses_llm` with the same fallback/validation pattern
+- add `select_route_llm` with the same fallback/validation pattern
 - expand route contracts beyond revenue
 - improve evaluation coverage
