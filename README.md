@@ -37,7 +37,7 @@ Implemented today:
   - `generate_report_llm` node with deterministic fallback
 
 Current test status:
-- **12 passing tests**
+- **16 passing tests**
 
 ## Current workflow
 
@@ -188,7 +188,8 @@ Current behavior:
 - if LLM is enabled and configured, the workflow can use:
   - `parse_question_llm`
   - `generate_report_llm`
-- if LLM is disabled or unavailable, it falls back to deterministic parsing/reporting
+- both LLM nodes now validate and normalize returned JSON contracts before accepting model output
+- if LLM is disabled, unavailable, or returns invalid output, it falls back to deterministic parsing/reporting
 
 ### Environment variables
 
@@ -216,6 +217,6 @@ If these are not set, the app still runs normally using fallback parsing.
 ## Next planned work
 
 - dedupe evidence rows in final reports
-- add stronger output validation / evaluation coverage for LLM nodes
+- add `generate_hypotheses_llm` with the same fallback/validation pattern
 - expand route contracts beyond revenue
 - improve evaluation coverage
